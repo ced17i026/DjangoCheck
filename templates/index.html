@@ -8,7 +8,11 @@
     </head>
     <body>
         <h1>Hi, This is Shiv Shankar</h1>
-        {{insert_me}}
+        {%if access_record%}
+        {% for acc in access_record %}
+        <h2>{{acc.name}} , {{acc.date}}</h2>
+        {%endfor%}
+        {%endif%}
         <img src="{% static "images/shiv.jpg"%}" alt = "The photo of shiv is here">
     </body>
 </html>
