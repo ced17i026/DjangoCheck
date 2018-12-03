@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from first_app.models import Topic,webpage,AccessRecord
+from first_app import forms
 # Create your views here.
 def index(req):
     weblist = AccessRecord.objects.order_by('date')
@@ -9,3 +10,6 @@ def index(req):
 def help(req):
     vpas = {'help': 'This has been redirect form help page'}
     return render(req,'help.html',context=vpas)
+def form_page(req):
+    form = forms.formName()
+    return render(req,'form_page.html',{'form':form})
