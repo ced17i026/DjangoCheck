@@ -5,9 +5,15 @@
         <h1>Hi, This is Shiv Shankar</h1>
         {%if access_record%}
         {% for acc in access_record %}
-        <h2>{{acc.name}} , {{acc.date}}</h2>
+        <h2>{{acc.name|cut:' '}} , {{acc.date|cut:','}}</h2>
         {%endfor%}
         {%endif%}
         <a href="/first_app/form">Click</a>
         <img src="{% static "images/shiv.jpg"%}" alt = "The photo of shiv is here">
+        <form method="POST">
+            {{form.as_p}}
+            {{form1.as_p}}
+            {%csrf_token%}
+            <input type="submit">
+        </form>
     {%endblock%}

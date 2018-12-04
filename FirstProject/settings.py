@@ -16,6 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 Templates_Dir = os.path.join(BASE_DIR,"templates")
 Static_Dir = os.path.join(BASE_DIR,"static")
+Media_Dir = os.path.join(BASE_DIR,'media')
 
 
 # Quick-start development settings - unsuitable for production
@@ -88,12 +89,16 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
+PASSWORD_HASHER = [
+    'django.contrib.auth.hasher.Argon2PasswordHasher',
+]
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTION':{'min_lenght':5},
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -125,3 +130,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     Static_Dir,
 ]
+
+MEDIA_ROOT = Media_Dir
+MEDIA_URL = '/media/'
